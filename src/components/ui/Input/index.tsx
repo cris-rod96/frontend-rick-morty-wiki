@@ -16,7 +16,7 @@ export const Input: React.FC<InputType> = ({
   return (
     <input
       type={type}
-      className="w-full bg-transparent px-3 text-white outline-none"
+      className="w-full bg-transparent px-3 outline-none text-gray-800"
       onChange={handleChange}
       value={value}
       name={name}
