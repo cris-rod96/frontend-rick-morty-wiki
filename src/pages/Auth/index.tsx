@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading, LoginFormComponent, SubHeading } from "../../components";
 import { RiLockFill, RiMailLine } from "react-icons/ri";
+import { LoginContainer } from "../../containers";
 
 export const AuthPage: React.FC<{}> = () => {
   return (
@@ -16,7 +17,7 @@ export const AuthPage: React.FC<{}> = () => {
       {/* Forms */}
       <div className="w-full h-full relative">
         {/* Login */}
-        <LoginFormComponent />
+        <LoginContainer />
 
         {/* Register */}
       </div>

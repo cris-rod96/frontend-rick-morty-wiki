@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, SubHeading } from "../../components";
+import { Heading, LoginFormComponent, SubHeading } from "../../components";
 import { titles } from "../../assets/data";
 
 export const LoginContainer: React.FC<{}> = () => {
@@ -8,6 +8,7 @@ export const LoginContainer: React.FC<{}> = () => {
       <div className="w-2/3 space-y-5">
         <Heading text={titles.login.heading} />
         <SubHeading text={titles.login.subheading} />
+        <LoginFormComponent />
       </div>
     </div>
   );
