@@ -34,4 +34,16 @@ export const titles = {
   },
 };
 
+// BASE_URL_ENDPOINT
+
 export const BASE_URL_ENDPOINT = "http://localhost:8080/api/v1";
+
+// AVATARS
+
+export const avatars = [
+  { image: "/bet_smith.png", name: "Bet Smith" },
+  { image: "/jerry_smith.png", name: "Jerry Smith" },
+  { image: "morty_smith.png", name: "Morty Smith" },
+  { image: "/rick_sanchez.png", name: "Rick Sanchez" },
+  { image: "/summer_smith.png", name: "Summer Smith" },
+];

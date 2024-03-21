@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdLogOut } from "react-icons/io";
-import { RiHomeLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { menu } from "../assets/data";
+import { UserResponseType } from "../types/index.types";
+import { getDataStorage } from "../utils/storage";
 
 type AsideProps = {
   showAside: boolean;
@@ -10,6 +11,12 @@ type AsideProps = {
 };
 
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
+  const [user, setUser] = useState<UserResponseType>();
+
+  useEffect(() => {
+    const userData = getDataStorage("user_data");
+    setUser(userData);
+  }, []);
   return (
     <>
       <aside
@@ -17,17 +24,20 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
           showAside ? "left-0" : "-left-full"
         } transition-all duration-300`}
       >
-        <section className="p-8 space-y-4 group border-b border-gray-500/30">
+        <section className="py-8 space-y-3 group border-b border-gray-500/30 flex flex-col items-center">
           <div className="relative w-12 h-12 rounded-full overflow-hidden">
             <img
-              src=""
+              src={user?.avatar}
               alt=""
               className="absolute w-full h-full object-cover rounded-full group-hover:scale-110 transition-all duration-300"
             />
           </div>
-          <h3 className="text-gray-500 text-sm group-hover:text-white transition-all duration-300">
-            Cristhian Rodríguez
+          <h3 className="text-gray-500 text-lg group-hover:text-white transition-all duration-300">
+            {user?.nick}
           </h3>
+          <h5 className="text-sm text-gray-300 opacity-35 group-hover:text-white transition-all duration-300">
+            {user?.email}
+          </h5>
         </section>
 
         <section className="flex flex-col justify-between h-full">
