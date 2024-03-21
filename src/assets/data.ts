@@ -1,10 +1,4 @@
-import {
-  RiHeartLine,
-  RiHomeLine,
-  RiLockFill,
-  RiMailLine,
-  RiUserLine,
-} from "react-icons/ri";
+import { RiHeartLine, RiHomeLine, RiUserLine } from "react-icons/ri";
 
 // Menu
 export const menu = [
@@ -39,3 +33,5 @@ export const titles = {
       "Embárcate en un viaje cósmico al registrarte en nuestra app. Conviértete en parte del círculo multiversal de personajes de Rick and Morty y descubre exclusivos perfiles de tus protagonistas favoritos. ",
   },
 };
+
+export const BASE_URL_ENDPOINT = "http://localhost:8080/api/v1";

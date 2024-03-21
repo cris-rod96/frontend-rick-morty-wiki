@@ -3,6 +3,7 @@ import { Label } from "../..";
 import { RiLockLine, RiMailLine, RiUserLine } from "react-icons/ri";
 import { Input } from "../../ui";
 import { useRegister } from "../../../hooks";
+import { BiLoaderCircle } from "react-icons/bi";
 
 export const RegisterFormComponent: React.FC<{}> = () => {
   const { handleChange, handleSubmit, loading, userData } = useRegister();
@@ -56,9 +57,15 @@ export const RegisterFormComponent: React.FC<{}> = () => {
       </div>
       <button
         type="submit"
-        className="py-4 w-full bg-green-600 text-white font-bold uppercase"
+        className="py-4 w-full bg-green-600 text-white font-bold uppercase flex items-center justify-center gap-2"
       >
-        Registrarme
+        <BiLoaderCircle
+          size={20}
+          className={`${
+            loading ? "block" : "hidden"
+          } animate-[spin_2s_linear_infinite]`}
+        />
+        <span>{loading ? "Verificando" : "Registrarme"}</span>
       </button>
     </form>
   );

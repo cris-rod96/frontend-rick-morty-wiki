@@ -3,9 +3,10 @@ import { useLogin } from "../../../hooks";
 import { Label } from "../..";
 import { RiLockLine, RiMailLine } from "react-icons/ri";
 import { Input } from "../../ui";
+import { BiLoaderCircle } from "react-icons/bi";
 
 export const LoginFormComponent: React.FC<{}> = () => {
-  const { credentials, handleChange, handleSubmit } = useLogin();
+  const { credentials, handleChange, handleSubmit, loading } = useLogin();
 
   return (
     <form
@@ -45,9 +46,15 @@ export const LoginFormComponent: React.FC<{}> = () => {
 
       <button
         type="submit"
-        className="py-4 w-full bg-green-600 text-white font-bold uppercase"
+        className="py-4 w-full bg-green-600 text-white font-bold uppercase flex items-center justify-center gap-2"
       >
-        Iniciar sesión
+        <BiLoaderCircle
+          size={20}
+          className={`${
+            loading ? "block" : "hidden"
+          } animate-[spin_2s_linear_infinite]`}
+        />
+        <span>{loading ? "Validando credenciales" : "Iniciar sesión"}</span>
       </button>
     </form>
   );
