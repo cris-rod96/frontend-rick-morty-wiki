@@ -25,3 +25,10 @@ export type CharacterType = {
   status: string;
   image: string;
 };
+
+export type CardCharacterFunctionsType = {
+  checkFavorite: (id: string) => void;
+  isFavorite: (id: string) => boolean;
+};
+
+export type CardCharacterType = CharacterType & CardCharacterFunctionsType;
