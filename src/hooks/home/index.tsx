@@ -6,8 +6,8 @@ import { utilsCookies } from "../../utils";
 import { favorites } from "../../api/favorites";
 import { useToast } from "../../context/toast.context";
 import { getFavorites } from "../../redux/slices/favoriteSlice";
-import * as Redux from "react-redux";
 import { RootState } from "../../redux/store";
+import * as Redux from "react-redux";
 
 export const useHome = () => {
   const [data, setData] = React.useState<CharacterType[]>([]);
