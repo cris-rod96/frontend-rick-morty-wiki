@@ -1,4 +1,12 @@
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaGithub,
+  FaLinkedin,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import { RiHeartLine, RiHomeLine, RiUserLine } from "react-icons/ri";
+import { TfiGithub } from "react-icons/tfi";
 
 // Menu
 export const menu = [
@@ -46,4 +54,20 @@ export const avatars = [
   { image: "morty_smith.png", name: "Morty Smith" },
   { image: "/rick_sanchez.png", name: "Rick Sanchez" },
   { image: "/summer_smith.png", name: "Summer Smith" },
+];
+
+// Social Media
+export const media = [
+  {
+    icon: FaLinkedinIn,
+    href: "https://linkedin.com/in/cristhian-rodriguez-659779205/",
+  },
+  {
+    icon: FaEnvelope,
+    href: "mailto:crisrodam1996@gmail.com?subject=Colaboremos%20juntos",
+  },
+  {
+    icon: TfiGithub,
+    href: "https://github.com/cris-rod96",
+  },
 ];

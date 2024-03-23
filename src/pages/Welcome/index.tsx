@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "../../context/toast.context";
 import { users } from "../../api/user";
 
-export const WelcomePage = () => {
+export const WelcomePage: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { getError, getSuccess } = useToast();
   const [avatarSelected, setAvatarSelected] = React.useState("");
