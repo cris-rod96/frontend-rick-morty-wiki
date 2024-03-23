@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 export const AboutPage: React.FC<{}> = () => {
   return (
-    <div className="flex flex-col space-y-5">
+    <div className="flex flex-col space-y-5 py-5">
       <h2 className="text-2xl uppercase font-bold text-green-700 max-w-2xl relative before:absolute before:w- before:h-[3px] before:bg-green-700 before:w-[200px] before:-bottom-2 before:rounded-2xl mb-10">
         Sobre el desarrollador
       </h2>
-      <div className="relative grid grid-cols-12 group">
-        <div className="col-span-4 flex justify-center">
-          <div className="w-96 h-96 absolute top-0   rounded-xl  transition-all duration-500 ">
+      <div className="relative lg:grid lg:grid-cols-12 flex flex-col items-center group">
+        <div className="lg:col-span-4 flex justify-center relative">
+          <div className="lg:w-96 lg:h-96 w-52 h-52 relative mb-10 top-0   rounded-xl  transition-all duration-500 ">
             <img
               src="/profile.jpg"
               alt=""
@@ -33,7 +33,7 @@ export const AboutPage: React.FC<{}> = () => {
             Para saber más de mi puedes contactarme por los siguientes medios
           </h2>
 
-          <div className="flex items-center gap-2 mt-3">
+          <div className="flex items-center lg:justify-start justify-center gap-2 mt-3">
             {media.map((item) => (
               <Link
                 to={item.href}

@@ -17,7 +17,7 @@ export const FavoritesPage: React.FC<{}> = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-5 ">
+    <div className="flex flex-col space-y-5 py-5">
       <h2 className="text-2xl uppercase font-bold text-green-700 max-w-2xl relative before:absolute before:w- before:h-[3px] before:bg-green-700 before:w-[200px] before:-bottom-2 before:rounded-2xl">
         Mis personajes favoritos
       </h2>
