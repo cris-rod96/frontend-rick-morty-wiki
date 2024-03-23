@@ -9,7 +9,17 @@ export const characters = {
     );
   },
 
-  getByName: (name: string) => {
-    return instance.get(`${endpoint}/search?name=${name}`);
+  getByName: ({
+    name,
+    limit,
+    page,
+  }: {
+    name: string;
+    limit?: number;
+    page?: number;
+  }) => {
+    return instance.get(
+      `${endpoint}/search?name=${name}&limit=${limit || 10}&page=${page || 1}`
+    );
   },
 };

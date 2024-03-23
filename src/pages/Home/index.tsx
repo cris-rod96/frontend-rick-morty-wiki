@@ -54,9 +54,18 @@ export const HomePage: React.FC<{}> = () => {
 
   const filterByName = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    characters.getByName(value).then((res) => {
-      setData(res.data);
-    });
+    characters
+      .getByName({
+        name: value,
+      })
+      .then((res) => {
+        const { characters, ...paginated } = res.data;
+        setData(characters);
+        setDataPaginated(paginated);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const checkFavorite = (id: string) => {
