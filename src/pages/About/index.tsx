@@ -14,7 +14,7 @@ export const AboutPage: React.FC<{}> = () => {
             <img
               src="/profile.jpg"
               alt=""
-              className="w-full h-full absolute object-cover rounded-xl"
+              className="w-full h-full absolute object-cover rounded-xl "
             />
           </div>
         </div>
@@ -38,7 +38,7 @@ export const AboutPage: React.FC<{}> = () => {
               <Link
                 to={item.href}
                 key={item.href}
-                className="px-3 py-3 text-white bg-gray-500 rounded-lg rotate-3 hover:rotate-0 transition-all duration-300"
+                className="px-3 py-3 text-white bg-gray-500 rounded-lg rotate-3 hover:rotate-0 transition-all duration-300 hover:bg-gray-600"
                 target="__blank"
               >
                 <item.icon size={16} className="" />

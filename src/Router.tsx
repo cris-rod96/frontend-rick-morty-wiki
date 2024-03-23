@@ -1,6 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { AboutPage, AuthPage, HomePage, WelcomePage } from "./pages";
+import {
+  AboutPage,
+  AuthPage,
+  HomePage,
+  NotFoundPage,
+  WelcomePage,
+} from "./pages";
 import { RouterLayout } from "./common/RouterLayout";
 import { FavoritesPage } from "./pages/Favorites";
 
@@ -11,6 +17,7 @@ export const AppRouter: React.FC<{}> = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
