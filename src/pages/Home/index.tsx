@@ -19,9 +19,11 @@ export const HomePage: React.FC<{}> = () => {
     goNextPage: () => {},
     goPrevPage: () => {},
   });
+
   const favoriteCharacters = useSelector(
     (state: RootState) => state.favorites.favorites
   );
+
   const dispatch = useDispatch();
   const { getSuccess } = useToast();
 
@@ -33,7 +35,6 @@ export const HomePage: React.FC<{}> = () => {
       .then((res) => {
         const { characters, ...paginated } = res.data;
         setData(characters);
-        console.log(paginated);
         setDataPaginated(paginated);
       })
       .catch((err) => {
@@ -49,6 +50,20 @@ export const HomePage: React.FC<{}> = () => {
   const goPrevPage = () => {
     if (dataPaginated.prevPage) {
       fetchCharacters(dataPaginated.currentPage - 1);
+    }
+  };
+
+  const getAllFavorites = () => {
+    const token = utilsCookies.getDataCookie("x-token");
+    if (token) {
+      favorites
+        .getFavorites(token)
+        .then((res) => {
+          dispatch(getFavorites(res.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -75,6 +90,7 @@ export const HomePage: React.FC<{}> = () => {
         .addFavorite(id, token)
         .then((res) => {
           getSuccess(res.data.msg);
+          getAllFavorites();
         })
         .catch((err) => {
           console.log(err);
@@ -82,27 +98,23 @@ export const HomePage: React.FC<{}> = () => {
     }
   };
 
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
-
-  useEffect(() => {
+  const removeFavorite = (id: string) => {
     const token = utilsCookies.getDataCookie("x-token");
     if (token) {
-      favorites
-        .getFavorites(token)
-        .then((res) => {
-          dispatch(getFavorites(res.data));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      favorites.removeFavorite(id, token).then((res) => {
+        getSuccess(res.data.msg);
+        getAllFavorites();
+      });
     }
-  }, [favoriteCharacters]);
+  };
 
   const isFavorite = (id: string) => {
-    return favoriteCharacters.find((fav) => fav.id === id) !== undefined;
+    return favoriteCharacters?.find((fav) => fav.id === id) !== undefined;
   };
+  useEffect(() => {
+    fetchCharacters();
+    getAllFavorites();
+  }, []);
 
   return (
     <div className="py-10">
@@ -120,6 +132,7 @@ export const HomePage: React.FC<{}> = () => {
       <div className="flex flex-wrap justify-evenly gap-5">
         {data.map((character) => (
           <CardCharacter
+            key={character.id}
             id={character.id}
             name={character.name}
             gender={character.gender}
@@ -129,6 +142,7 @@ export const HomePage: React.FC<{}> = () => {
             origin={character.origin}
             checkFavorite={checkFavorite}
             isFavorite={isFavorite}
+            removeFavorite={removeFavorite}
           />
         ))}
       </div>

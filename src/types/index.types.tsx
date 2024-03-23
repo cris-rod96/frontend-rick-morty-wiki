@@ -28,6 +28,7 @@ export type CharacterType = {
 
 export type CardCharacterFunctionsType = {
   checkFavorite: (id: string) => void;
+  removeFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
 };
 

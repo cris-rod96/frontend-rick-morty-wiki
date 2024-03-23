@@ -10,8 +10,9 @@ export const CardCharacter: React.FC<CardCharacterType> = ({
   location,
   origin,
   status,
-  checkFavorite,
   isFavorite,
+  checkFavorite,
+  removeFavorite,
 }) => {
   return (
     <div className="flex flex-col items-center space-y-4 py-10 border-b group cursor-pointer">
@@ -33,7 +34,13 @@ export const CardCharacter: React.FC<CardCharacterType> = ({
 
         <button
           className="hover:scale-110 transition-all duration-300"
-          onClick={() => checkFavorite(id)}
+          onClick={() => {
+            if (isFavorite(id)) {
+              removeFavorite(id);
+            } else {
+              checkFavorite(id);
+            }
+          }}
         >
           {isFavorite(id) ? (
             <RiHeartFill size={32} className="text-red-500" />

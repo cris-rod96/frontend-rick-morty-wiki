@@ -9,6 +9,13 @@ export const favorites = {
       { headers: { "x-token": token } }
     );
   },
+  removeFavorite: (characterID: string, token: string) => {
+    return instance.delete(`${endpoint}/delete/${characterID}`, {
+      headers: {
+        "x-token": token,
+      },
+    });
+  },
   getFavorites: (token: string) => {
     return instance.get(`${endpoint}/list`, {
       headers: {
