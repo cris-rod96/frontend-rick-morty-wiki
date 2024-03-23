@@ -3,8 +3,10 @@ import { instance } from "./base.api";
 const endpoint = "characters";
 
 export const characters = {
-  getAll: () => {
-    return instance.get(`${endpoint}/list`);
+  getAll: ({ limit, page }: { limit?: number; page?: number }) => {
+    return instance.get(
+      `${endpoint}/list?limit=${limit || 10}&page=${page || 1}`
+    );
   },
 
   getByName: (name: string) => {

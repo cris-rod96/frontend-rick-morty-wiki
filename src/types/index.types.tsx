@@ -32,3 +32,12 @@ export type CardCharacterFunctionsType = {
 };
 
 export type CardCharacterType = CharacterType & CardCharacterFunctionsType;
+
+export type PaginatedType = {
+  numPages: number;
+  prevPage: boolean;
+  nextPage: boolean;
+  currentPage: number;
+  goNextPage: () => void;
+  goPrevPage: () => void;
+};
