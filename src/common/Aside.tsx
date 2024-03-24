@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { menu } from "../assets/data";
 import { UserResponseType } from "../types/index.types";
 import { getDataStorage } from "../utils/storage";
