@@ -12,18 +12,10 @@ type AsideProps = {
 
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   const [user, setUser] = useState<UserResponseType>();
-  const [buttonSession, setSButtonSession] = useState("");
 
   useEffect(() => {
     const userData = getDataStorage("user_data");
-    if (userData !== null) {
-      setUser(userData);
-      setSButtonSession("/logout");
-    } else {
-      setSButtonSession("/auth");
-    }
-
-    console.log(buttonSession);
+    setUser(userData);
   }, []);
   return (
     <>
@@ -61,22 +53,23 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
               </Link>
             ))}
           </ul>
-          <Link
-            to={buttonSession}
-            className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
-          >
-            {user !== null ? (
-              <>
-                <IoMdLogOut size={20} />
-                <span>Cerrar sesión</span>
-              </>
-            ) : (
-              <>
-                <IoMdLogIn size={20} />
-                <span>Iniciar sesión</span>
-              </>
-            )}
-          </Link>
+          {user !== null ? (
+            <Link
+              to={"/logout"}
+              className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
+            >
+              <IoMdLogOut size={20} />
+              <span>Cerrar sesión</span>
+            </Link>
+          ) : (
+            <Link
+              to={"/auth"}
+              className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
+            >
+              <IoMdLogIn size={20} />
+              <span>Iniciar sesión</span>
+            </Link>
+          )}
         </section>
       </aside>
       <div
