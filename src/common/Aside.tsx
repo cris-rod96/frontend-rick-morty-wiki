@@ -13,7 +13,6 @@ type AsideProps = {
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   const [user, setUser] = useState<UserResponseType>();
   const [buttonSession, setSButtonSession] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const userData = getDataStorage("user_data");
