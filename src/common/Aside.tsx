@@ -12,12 +12,17 @@ type AsideProps = {
 
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   const [user, setUser] = useState<UserResponseType>();
-
+  const [buttonSession, setSButtonSession] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const userData = getDataStorage("user_data");
-    setUser(userData);
+    if (userData) {
+      setUser(userData);
+      setSButtonSession("/logout");
+    } else {
+      setSButtonSession("/auth");
+    }
   }, []);
   return (
     <>
@@ -55,13 +60,9 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
               </Link>
             ))}
           </ul>
-          <button
+          <Link
+            to={buttonSession}
             className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
-            onClick={() => {
-              if (user) {
-                navigate("/auth");
-              }
-            }}
           >
             {user !== null ? (
               <>
@@ -74,7 +75,7 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
                 <span>Iniciar sesión</span>
               </>
             )}
-          </button>
+          </Link>
         </section>
       </aside>
       <div
