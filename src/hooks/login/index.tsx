@@ -45,11 +45,12 @@ export const useLogin = () => {
       .then((res) => {
         const { user, token } = res.data;
         saveData(user, token);
-        if (!user.avatar) {
+        if (user.avatar === null) {
           navigate("/welcome");
+        } else {
+          navigate("/home");
+          resetForm();
         }
-        navigate("/home");
-        resetForm();
       })
       .catch((error) => {
         if (error instanceof AxiosError) {
