@@ -45,6 +45,9 @@ export const useLogin = () => {
       .then((res) => {
         const { user, token } = res.data;
         saveData(user, token);
+        if (!user.avatar) {
+          navigate("/welcome");
+        }
         navigate("/home");
         resetForm();
       })
