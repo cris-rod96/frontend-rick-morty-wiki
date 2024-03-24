@@ -17,12 +17,14 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
 
   useEffect(() => {
     const userData = getDataStorage("user_data");
-    if (userData) {
+    if (userData !== null) {
       setUser(userData);
       setSButtonSession("/logout");
     } else {
       setSButtonSession("/auth");
     }
+
+    console.log(buttonSession);
   }, []);
   return (
     <>
