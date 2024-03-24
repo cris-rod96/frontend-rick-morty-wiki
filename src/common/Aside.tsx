@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { IoMdLogOut } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
 import { menu } from "../assets/data";
 import { UserResponseType } from "../types/index.types";
 import { getDataStorage } from "../utils/storage";
@@ -12,6 +12,8 @@ type AsideProps = {
 
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   const [user, setUser] = useState<UserResponseType>();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userData = getDataStorage("user_data");
@@ -53,9 +55,25 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
               </Link>
             ))}
           </ul>
-          <button className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2">
-            <IoMdLogOut size={20} />
-            <span>Cerrar sesión</span>
+          <button
+            className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
+            onClick={() => {
+              if (user) {
+                navigate("/auth");
+              }
+            }}
+          >
+            {user !== null ? (
+              <>
+                <IoMdLogOut size={20} />
+                <span>Cerrar sesión</span>
+              </>
+            ) : (
+              <>
+                <IoMdLogIn size={20} />
+                <span>Iniciar sesión</span>
+              </>
+            )}
           </button>
         </section>
       </aside>
