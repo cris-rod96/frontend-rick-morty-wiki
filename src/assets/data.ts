@@ -1,10 +1,4 @@
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaGithub,
-  FaLinkedin,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { FaEnvelope, FaLinkedinIn } from "react-icons/fa";
 import { RiHeartLine, RiHomeLine, RiUserLine } from "react-icons/ri";
 import { TfiGithub } from "react-icons/tfi";
 

@@ -3,9 +3,7 @@ import { RiArrowLeftCircleFill, RiArrowRightCircleFill } from "react-icons/ri";
 import { PaginatedType } from "../../types/index.types";
 
 export const PaginatedComponent: React.FC<PaginatedType> = ({
-  nextPage,
   currentPage,
-  prevPage,
   numPages,
   goNextPage,
   goPrevPage,

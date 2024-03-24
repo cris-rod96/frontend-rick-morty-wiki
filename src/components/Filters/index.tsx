@@ -5,7 +5,7 @@ type FiltersType = {
   filterByName: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Filters: React.FC<FiltersType> = ({ cant, filterByName }) => {
+export const Filters: React.FC<FiltersType> = ({ filterByName }) => {
   return (
     <input
       type="text"
