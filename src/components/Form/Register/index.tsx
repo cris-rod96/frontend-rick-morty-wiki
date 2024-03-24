@@ -57,7 +57,7 @@ export const RegisterFormComponent: React.FC<{}> = () => {
       </div>
       <button
         type="submit"
-        className="py-4 w-full bg-green-600 text-white font-bold uppercase flex items-center justify-center gap-2"
+        className="py-4 w-full bg-green-600 text-white font-bold uppercase flex items-center justify-center gap-2 lg:text-lg text-xl "
       >
         <BiLoaderCircle
           size={20}

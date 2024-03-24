@@ -12,7 +12,6 @@ export const WelcomePage: React.FC<{}> = () => {
   const selectAvatar = (image: string) => setAvatarSelected(image);
   const saveAvatarStorage = () => {
     const newData = updateDataStorage("user_data", "avatar", avatarSelected);
-    console.log(newData);
 
     if (newData) {
       users
@@ -34,8 +33,8 @@ export const WelcomePage: React.FC<{}> = () => {
 
   return (
     <div className="absolute w-full h-screen overflow-hidden bg-white flex flex-col justify-center items-center">
-      <div className="w-2/4 py-10 flex flex-col items-end space-y-5">
-        <h2 className="text-center w-full text-3xl text-green-900 font-bold">
+      <div className="lg:w-2/4 py-10 flex flex-col items-end space-y-5">
+        <h2 className="text-center w-full text-3xl text-green-900 font-bold mb-5">
           Escoge al avatar de tu preferencia
         </h2>
 

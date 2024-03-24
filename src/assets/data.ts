@@ -44,7 +44,7 @@ export const titles = {
 
 // BASE_URL_ENDPOINT
 
-export const BASE_URL_ENDPOINT = "http://localhost:8080/api/v1";
+export const BASE_URL_ENDPOINT = "https://backend-rick-morty-wiki.onrender.com";
 
 // AVATARS
 

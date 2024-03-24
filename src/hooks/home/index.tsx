@@ -8,12 +8,13 @@ import { useToast } from "../../context/toast.context";
 import { getFavorites } from "../../redux/slices/favoriteSlice";
 import { RootState } from "../../redux/store";
 import * as Redux from "react-redux";
+import { AxiosError } from "axios";
 
 export const useHome = () => {
   const [data, setData] = React.useState<CharacterType[]>([]);
   const { setDataPaginated, dataPaginated } = usePagination();
   const dispatch = Redux.useDispatch();
-  const { getSuccess } = useToast();
+  const { getSuccess, getError } = useToast();
   const favoriteCharacters = Redux.useSelector(
     (state: RootState) => state.favorites.favorites
   );
@@ -28,8 +29,14 @@ export const useHome = () => {
         setData(characters);
         setDataPaginated(paginated);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error instanceof AxiosError) {
+          if (error.response?.data.errors) {
+            return getError(error.response.data.errors[0].msg);
+          }
+
+          getError(error.response?.data.msg);
+        }
       });
   };
 
@@ -56,8 +63,14 @@ export const useHome = () => {
         setData(characters);
         setDataPaginated(paginated);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        if (error instanceof AxiosError) {
+          if (error.response?.data.errors) {
+            return getError(error.response.data.errors[0].msg);
+          }
+
+          getError(error.response?.data.msg);
+        }
       });
   };
 
@@ -70,7 +83,13 @@ export const useHome = () => {
           dispatch(getFavorites(res.data));
         })
         .catch((error) => {
-          console.log(error);
+          if (error instanceof AxiosError) {
+            if (error.response?.data.errors) {
+              return getError(error.response.data.errors[0].msg);
+            }
+
+            getError(error.response?.data.msg);
+          }
         });
     }
   };
@@ -84,8 +103,14 @@ export const useHome = () => {
           getSuccess(res.data.msg);
           getAllFavorites();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          if (error instanceof AxiosError) {
+            if (error.response?.data.errors) {
+              return getError(error.response.data.errors[0].msg);
+            }
+
+            getError(error.response?.data.msg);
+          }
         });
     }
   };
