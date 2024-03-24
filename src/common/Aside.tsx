@@ -3,7 +3,7 @@ import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { menu } from "../assets/data";
 import { UserResponseType } from "../types/index.types";
-import { getDataStorage } from "../utils/storage";
+import { utilsCookies, utilsStorage } from "../utils";
 
 type AsideProps = {
   showAside: boolean;
@@ -13,8 +13,13 @@ type AsideProps = {
 export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   const [user, setUser] = useState<UserResponseType>();
 
+  const removeStorageCookie = () => {
+    utilsStorage.removeDataStorage("user_data");
+    utilsCookies.removeDataCookie("x-token");
+  };
+
   useEffect(() => {
-    const userData = getDataStorage("user_data");
+    const userData = utilsStorage.getDataStorage("user_data");
     setUser(userData);
   }, []);
   return (
@@ -55,8 +60,9 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
           </ul>
           {user !== null ? (
             <Link
-              to={"/logout"}
+              to={"/auth"}
               className="px-8 py-5 border-t border-gray-500/30 text-gray-500 hover:text-white transition-all duration-300 flex items-center gap-2"
+              onClick={removeStorageCookie}
             >
               <IoMdLogOut size={20} />
               <span>Cerrar sesión</span>
