@@ -1,9 +1,19 @@
 import React from "react";
 import { LoginContainer, RegisterContainer } from "../../containers";
+import { LoadingComponent } from "../../components";
 
 export const AuthPage: React.FC<{}> = () => {
   const [showRegister, setShowRegister] = React.useState<boolean>(false);
   const toggleRegister = () => setShowRegister(!showRegister);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3500);
+  }, []);
   return (
     <div className="relative w-full h-screen grid lg:grid-cols-2 overflow-hidden">
       <div className="w-full relative lg:h-full h-screen">
@@ -28,6 +38,8 @@ export const AuthPage: React.FC<{}> = () => {
           toggleRegister={toggleRegister}
         />
       </div>
+
+      <LoadingComponent loading={loading} />
     </div>
   );
 };

@@ -65,11 +65,7 @@ export const useHome = () => {
       })
       .catch((error) => {
         if (error instanceof AxiosError) {
-          if (error.response?.data.errors) {
-            return getError(error.response.data.errors[0].msg);
-          }
-
-          getError(error.response?.data.msg);
+          setData([]);
         }
       });
   };

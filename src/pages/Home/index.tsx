@@ -1,5 +1,10 @@
 import React from "react";
-import { CardCharacter, Filters, PaginatedComponent } from "../../components";
+import {
+  CardCharacter,
+  Filters,
+  LoadingComponent,
+  PaginatedComponent,
+} from "../../components";
 import { useHome } from "../../hooks/home";
 
 export const HomePage: React.FC<{}> = () => {
@@ -15,6 +20,15 @@ export const HomePage: React.FC<{}> = () => {
     getAllFavorites,
     isFavorite,
   } = useHome();
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3500);
+  }, []);
 
   React.useEffect(() => {
     fetchCharacters();
@@ -23,6 +37,7 @@ export const HomePage: React.FC<{}> = () => {
 
   return (
     <div className="py-10">
+      <LoadingComponent loading={loading} />
       <div className="w-full h-full flex justify-between items-center py-5 border-b">
         <PaginatedComponent
           nextPage={dataPaginated.nextPage}

@@ -4,3 +4,4 @@ export { LoginFormComponent } from "./Form";
 export { CardCharacter } from "./CardCharacter";
 export { Filters } from "./Filters";
 export { PaginatedComponent } from "./Paginated";
+export { LoadingComponent } from "./Loading";

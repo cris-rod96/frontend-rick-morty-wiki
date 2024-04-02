@@ -25,7 +25,7 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
   return (
     <>
       <aside
-        className={`lg:w-[13vw] md:w-[40vw] w-[70vw] fixed top-0 lg:left-0 h-full bg-dark border-r border-gray-500/30 flex flex-col z-50 ${
+        className={`lg:w-[13vw] md:w-[40vw] w-[70vw] fixed top-0 lg:left-0 h-full bg-dark border-r border-gray-500/30 flex flex-col z-30 ${
           showAside ? "left-0" : "-left-full"
         } transition-all duration-300`}
       >
@@ -80,7 +80,7 @@ export const Aside: React.FC<AsideProps> = ({ showAside, toggleAside }) => {
       </aside>
       <div
         onClick={toggleAside}
-        className={`fixed w-full h-full bg-black/15 z-40 ${
+        className={`fixed w-full h-full bg-black/15 z-20 ${
           showAside ? "block" : "hidden"
         } transition-all duration-150`}
       />

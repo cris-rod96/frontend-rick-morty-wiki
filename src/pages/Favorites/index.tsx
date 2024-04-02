@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { CardCharacter } from "../../components";
+import { CardCharacter, LoadingComponent } from "../../components";
 import { useHome } from "../../hooks/home";
 import { RiArrowLeftLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,16 @@ export const FavoritesPage: React.FC<{}> = () => {
   );
   const navigate = useNavigate();
   const { isFavorite, checkFavorite, removeFavorite } = useHome();
+
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 3500);
+  }, []);
   const goToHome = () => {
     navigate("/home");
   };
@@ -52,6 +62,8 @@ export const FavoritesPage: React.FC<{}> = () => {
           </button>
         </div>
       )}
+
+      <LoadingComponent loading={loading} />
     </div>
   );
 };
