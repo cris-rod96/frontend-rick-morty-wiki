@@ -38,8 +38,8 @@ export const titles = {
 
 // BASE_URL_ENDPOINT
 
-// export const BASE_URL_ENDPOINT = "https://backend-rick-morty-wiki.onrender.com";
-export const BASE_URL_ENDPOINT = "http://localhost:3000";
+export const BASE_URL_ENDPOINT = "https://backend-rick-morty-wiki.onrender.com";
+// export const BASE_URL_ENDPOINT = "http://localhost:3000";
 
 // AVATARS
 
