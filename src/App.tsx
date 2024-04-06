@@ -6,10 +6,10 @@ import { utilsCookies } from "./utils";
 export const App = () => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const token = utilsCookies.getDataCookie("x-token");
-    if (!token) navigate("/auth");
-  }, [navigate]);
+  // React.useEffect(() => {
+  //   const token = utilsCookies.getDataCookie("x-token");
+  //   if (!token) navigate("/auth");
+  // }, [navigate]);
 
   return <AppRouter />;
 };
