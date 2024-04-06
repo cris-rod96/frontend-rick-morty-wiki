@@ -1,13 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppRouter } from "./Router";
-import { ToastProvider } from "./context/toast.context";
+import React from "react";
+import { utilsCookies } from "./utils";
 
 export const App = () => {
-  return (
-    <ToastProvider>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
-    </ToastProvider>
-  );
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const token = utilsCookies.getDataCookie("x-token");
+    if (!token) navigate("/auth");
+  }, [navigate]);
+
+  return <AppRouter />;
 };
