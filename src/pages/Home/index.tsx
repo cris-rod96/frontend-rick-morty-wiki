@@ -35,9 +35,10 @@ export const HomePage: React.FC<{}> = () => {
     getAllFavorites();
   }, []);
 
-  return (
+  return loading ? (
+    <LoadingComponent loading={loading} />
+  ) : (
     <div className="py-10">
-      <LoadingComponent loading={loading} />
       <div className="w-full h-full flex justify-between items-center py-5 border-b">
         <PaginatedComponent
           nextPage={dataPaginated.nextPage}

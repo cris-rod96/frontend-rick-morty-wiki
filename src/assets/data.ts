@@ -56,16 +56,16 @@ export const media = [
   {
     icon: FaLinkedinIn,
     href: "https://linkedin.com/in/cristhian-rodriguez-659779205/",
-    bg: "bg-linkedinButton"
+    bg: "bg-linkedinButton",
   },
   {
     icon: FaEnvelope,
     href: "mailto:crisrodam1996@gmail.com?subject=Colaboremos%20juntos",
-    bg: "bg-emailButton"
+    bg: "bg-emailButton",
   },
   {
     icon: TfiGithub,
     href: "https://github.com/cris-rod96",
-    bg: "bg-githubButton"
+    bg: "bg-githubButton",
   },
 ];
