@@ -49,7 +49,7 @@ export const AboutPage: React.FC<{}> = () => {
             classes="mt-10"
           />
 
-          <div className="relative md:bottom-5 flex items-center w-full left-0 justify-center gap-2 md:mt-0 mt-10  lg:justify-start">
+          <div className="relative md:bottom-5 flex items-center w-full left-0 justify-center gap-2 mt-10 lg:justify-start md:mt-10">
             {media.map((item) => (
               <Link
                 to={item.href}
